@@ -1,0 +1,36 @@
+# @file : .gitignore
+
+# @todo : temporary files from Linux, vim, Windows, Office, etc 
+
+# Virtual environments
+.rep_venv/
+.venv/
+venv/
+env/
+
+# Python cache / build artifacts
+__pycache__/
+*.py[cod]
+*.so
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Local outputs
+*.csv
+*.txt
