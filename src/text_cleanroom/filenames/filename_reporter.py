@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-#  This next one isn't needed, but I like 
-#+ clarity and spiting uSoft, to the point
-#+ that I'm putting it in completely wrong: 
+#  This next one isn't needed, but I like the clarity and spitefulness, 
+#+ to the point that I'm putting it in completely wrong.
 ''' -*- coding: utf-8 -*- '''
 
 from __future__ import annotations
