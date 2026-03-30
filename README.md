@@ -105,6 +105,27 @@ for details on provenance, scope, and usage boundaries.
 pip install -e .
 ```
 
+## Usage (example)
+```Bash
+text-cleanroom --input file1.txt file2.txt
+```
+
+## Status
+
+Still collecting many tools and writing them so they're in one place, coding more cleanly, etc., so it's progressing quickly while actively evolving.
+
+The current focus is on:
+
+- reliable detection from different inputs
+- structured reporting
+
+## License
+
+This project is licensed under the MIT License.
+
+See LICENSE for details.
+
+
 ## Notes
 
 This project reflects a preference for:
