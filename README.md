@@ -1,6 +1,6 @@
 # Text Cleanroom
 
-A lightweight, deterministic toolkit for analyzing and fixing problematic filenames and text artifacts in real-world datasets.
+A lightweight, deterministic toolkit for analyzing and fixing problematic text artifacts in filenames and text files drawn from real-world datasets.
 
 ## Overview
 
@@ -18,11 +18,21 @@ It is designed for messy, human-generated inputs such as:
 - copy/pasted filename lists
 - mixed encoding environments
 - partially structured HTML/text artifacts
-- text files coming from a variety of sources and having a variety of (sometimes mixed) encodings, including with messily-encoded websites, notably those with text pasted from Microsoft Office products and elsewhere
+- text originating from heterogeneous sources, including Office exports and poorly encoded web content
 
-- 
+---
+
+## Design Intent
+
+Many real-world datasets fail—not because of model limitations—but because of inconsistencies in text representation.
+
+This toolkit focuses on making those inconsistencies visible, measurable, and correctable before downstream processing.
+
+---
 
 ## Features
+
+### Detection and Reporting
 
 - Detection of:
   - literal spaces
@@ -31,26 +41,33 @@ It is designed for messy, human-generated inputs such as:
 - Highlighting of problematic spans (CLI-friendly and editor-friendly modes)
 - CSV output for downstream analysis
 - Foundation for comm-style comparison reports
-- Designed to support later normalization and fixing passes
-- Fixing passes
-  - Fixing filenames
-  - Fixing files with otherwise unusable encodings
-- Denormalization passes
-  - mostly used for transcript normalization before scoring
-  - modularized for use as part of a transcript-preparation pipeline as well as for usage of any step, independently
-    - `.tolower` and `casefold` style processing
-    - remove punctuation
-    - ASCII-ise everything, including a (non-one-to-one) process to go from multilingual to ASCII
-    - numbers
-    - time of day
-    - many more text processing use cases, including handling of hyphenated words for comparability
-    - many more-involved NLP use cases for correctness and comparability, including handling of
-      - units of measure
-      - alternate accepted spellings&mdash; intranationally and internationally
-      - acronyms/initialisms/hybrids
-      - URL and email addresses
-      - proper name homonyms
-      - postal addresses handling
+
+### Correction (Fixing Passes)
+
+- Filename normalization and repair
+- Repair of text files with inconsistent or unusable encodings
+
+### Normalization / Denormalization Pipelines
+
+Primarily designed for transcript preparation and comparability tasks, but modular enough for independent use.
+
+Includes:
+
+- Case normalization (`.lower`, `casefold`)
+- Punctuation removal
+- ASCII normalization (including lossy multilingual → ASCII transforms where appropriate)
+- Handling of:
+  - numbers
+  - time expressions
+  - hyphenated words (for comparability)
+  - units of measure
+  - alternate spellings (intranational and international)
+  - acronyms and initialisms
+  - URLs and email addresses
+  - proper-name homonyms
+  - postal addresses
+
+---
 
 ## Philosophy
 
@@ -62,19 +79,25 @@ This toolkit is built around a few guiding principles:
 - **Separation of concerns** (reporting vs fixing vs normalization)
 - **Robustness to messy, real-world data**
 
+---
+
 ## Project Scope
 
-This repository includes pieces of a broad personal toolkit for:
+This repository includes components of a broader personal toolkit for:
 
 - text normalization
-- encoding/decoding workflows
+- encoding and decoding workflows
 - filename analysis and correction
+
+The goal is to make these tools usable both independently and as part of larger pipelines.
 
 See:
 
 - `PROVENANCE.md`
 
-for details on provenance and scope.
+for details on provenance, scope, and usage boundaries.
+
+---
 
 ## Installation (local development)
 
@@ -82,12 +105,13 @@ for details on provenance and scope.
 pip install -e .
 ```
 
-or
+## Notes
 
-```Windows PowerShell
-pip install -e .
-```
+This project reflects a preference for:
 
-# Original `text-cleanroom` description
+- ASCII-safe representations where appropriate
+- reproducible transformations
+- explicit handling of edge cases over silent assumptions
 
-Text encoding, decoding, normalization, etc. I like keeping things ASCII with no spaces nor special characters, so you'll see that as an option most places. For filenames and text file contents.
+It is intended for use across professional, personal, and research contexts involving real-world, imperfect text data.
+
