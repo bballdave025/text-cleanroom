@@ -1,4 +1,4 @@
-from text_cleanroom.reporter import main
+from text_cleanroom.filenames.filename_reporter import main
 
 
 if __name__ == "__main__":
