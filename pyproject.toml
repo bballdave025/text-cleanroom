@@ -13,7 +13,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-text-cleanroom = "text_cleanroom.filenames.fname_reporter_cli.py:main"
+text-cleanroom = "text_cleanroom.filenames.fname_reporter_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
